@@ -10,25 +10,15 @@ import UIKit
 class CartViewController: UIViewController {
 
     @IBOutlet weak var cartTableView: UITableView!
-    var list = [
-        [ "title" : "유년기오구의 쪼꼬만 일상",
-          "time": "2022.11.03 . 22:34" ],
-        [ "title" : "콩글리시 이즈 꿀잼2",
-          "time": "2022.11.03 . 22:35"],
-        [ "title" : "진짜 찐?",
-          "time": "2022.11.03 . 22:36"],
-        [ "title" : "바다 갈매기 매봉이는 여유로워",
-          "time": "2022.11.03 . 22:37" ],
-        [ "title" : "공하 3 (공주하이)",
-          "time": "2022.11.03 . 22:38"]
-        ]
-//    var dataArray: Array<String> = ["유년기오구의 쪼꼬만 일상","콩글리시 이즈 꿀잼2","진짜 찐?"]. 이건어떨떄 쓰는거냐;
+    var list : [[String : String]] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cartTableView.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "CartTableViewCell")
         self.navigationItem.title = "History"
         let button = UIBarButtonItem(title: String("clear"),style: .plain, target: self, action: #selector(clearButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = button
+        getUserDefaults()
         
     }
     
@@ -36,6 +26,12 @@ class CartViewController: UIViewController {
     func clearButtonAction(_ sender: Any) {
         let vc = MainViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func getUserDefaults(){
+        let  userDefaultsArray = UserDefaults.standard.array(forKey: "myCart") as? [[String : String]] ?? []
+        list = userDefaultsArray
+        print(list)
+        cartTableView.reloadData()
     }
 }
 
@@ -61,12 +57,12 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
                 if editingStyle == .delete {
     
                     list.remove(at: indexPath.row)
+                    UserDefaults.standard.set(list, forKey: "myCart")
                     cartTableView.reloadData()
     
                 } else if editingStyle == .insert {
     
                 }
 }
-//익스텐션 func 순서가 바뀌면안댐 ?
 
     }

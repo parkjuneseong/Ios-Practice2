@@ -34,8 +34,8 @@ class MainViewController: UIViewController {
         backbutton.title = "back"
         self.navigationItem.leftBarButtonItem = backbutton
         self.navigationItem.leftBarButtonItem?.tintColor = .black
-//        let button1 = UIBarButtonItem(image: UIImage(systemName: "click"),style: .plain, target: self, action: #selector(clickButtonAction(_:)))
-//        self.navigationItem.leftBarButtonItem = button
+        //        let button1 = UIBarButtonItem(image: UIImage(systemName: "click"),style: .plain, target: self, action: #selector(clickButtonAction(_:)))
+        //        self.navigationItem.leftBarButtonItem = button
         //네비게이션 바는 코드로만 해야하는건가 ? 네비바에 버튼은 셀렉터가 꼭있어야하나?버튼은 그냥만들수 있지만 액션을 취하기 위해 가져오는개 셀렉터인가
     }
     @objc
@@ -43,12 +43,25 @@ class MainViewController: UIViewController {
         let vc = CartViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-//    @objc
-//    func clickButtonAction(_ sender: Any) {
-//
-       
+    @objc
+    func purchaseButtonActoin(_ sender: UIButton){
+        let buttonPosition : CGPoint = sender.convert(.zero,to:self.tableView)
+        let indexPath: IndexPath = self.tableView.indexPathForRow(at: buttonPosition) ?? IndexPath()
+        
+        // 현재 시간 가져오기
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dataStirng = formatter.string(from: Date())
+        //  배열에 넣을 dictionary생성
+        let dic : [String : String] = ["title":list[indexPath.row]["title"] ?? "" , "time" : dataStirng]
+        //UserDefaults에서 배열 가져와서 배열에 추가
+        var userDefaultsArray = UserDefaults.standard.array(forKey: "myCart") as? [[String : String]] ?? []
+        userDefaultsArray.append(dic)
+        //추가된 배열을 UserDefaults 에 다시 저장
+        UserDefaults.standard.set(userDefaultsArray, forKey: "myCart")
+        print("구매완료")
+    }
 }
-
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,15 +73,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell
         cell?.bind(title: list[indexPath.row]["title"] ?? "" , author: list[indexPath.row]["author"] ?? "" , image: UIImage(named: list[indexPath.row]["image"] ?? "" ) ?? UIImage())
         cell?.selectionStyle = .none
-    return cell ?? TableViewCell()
-}
-func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let headerView = EmotionTableViewHeaderView()
+        cell?.purchaseButton.addTarget(self, action: #selector(purchaseButtonActoin(_:)), for: .touchUpInside)
+        
+        return cell ?? TableViewCell()
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = EmotionTableViewHeaderView()
+        
+        return headerView
+    }
     
-    return headerView
-}
-
-func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 250
-}
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
+    }
 }
