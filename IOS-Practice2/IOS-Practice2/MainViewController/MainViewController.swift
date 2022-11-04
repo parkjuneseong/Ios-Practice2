@@ -8,6 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     let list = [
         [ "title" : "유년기오구의 쪼꼬만 일상", "author" : "문랩", "image" : "image01.png" ],
@@ -26,8 +27,28 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        self.navigationItem.title = "이모티콘"
+        let button = UIBarButtonItem(image: UIImage(systemName: "cart"),style: .plain, target: self, action: #selector(cartButtonAction(_:)))
+        self.navigationItem.rightBarButtonItem = button
+        let backbutton = UIBarButtonItem(title: "뒤로가기", style: .plain,target: nil,action: nil)
+        backbutton.title = "back"
+        self.navigationItem.leftBarButtonItem = backbutton
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
+//        let button1 = UIBarButtonItem(image: UIImage(systemName: "click"),style: .plain, target: self, action: #selector(clickButtonAction(_:)))
+//        self.navigationItem.leftBarButtonItem = button
+        //네비게이션 바는 코드로만 해야하는건가 ? 네비바에 버튼은 셀렉터가 꼭있어야하나?버튼은 그냥만들수 있지만 액션을 취하기 위해 가져오는개 셀렉터인가
     }
+    @objc
+    func cartButtonAction(_ sender: Any) {
+        let vc = CartViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+//    @objc
+//    func clickButtonAction(_ sender: Any) {
+//
+       
 }
+
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,7 +59,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell
         cell?.bind(title: list[indexPath.row]["title"] ?? "" , author: list[indexPath.row]["author"] ?? "" , image: UIImage(named: list[indexPath.row]["image"] ?? "" ) ?? UIImage())
+        cell?.selectionStyle = .none
+    return cell ?? TableViewCell()
+}
+func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let headerView = EmotionTableViewHeaderView()
     
-    return TableViewCell()
+    return headerView
+}
+
+func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 250
 }
 }

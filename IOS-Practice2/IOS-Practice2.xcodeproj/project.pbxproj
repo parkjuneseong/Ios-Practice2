@@ -15,7 +15,9 @@
 		8C3120EB2910F3A7003B4D00 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120E92910F3A7003B4D00 /* TableViewCell.swift */; };
 		8C3120EC2910F3A7003B4D00 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3120EA2910F3A7003B4D00 /* TableViewCell.xib */; };
 		8C3120EE2910F3D1003B4D00 /* EmoticonTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120ED2910F3D1003B4D00 /* EmoticonTableHeaderView.swift */; };
-		8C3120F02910F3EC003B4D00 /* EmoticonTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3120EF2910F3EC003B4D00 /* EmoticonTableHeaderView.xib */; };
+		8C3120F02910F3EC003B4D00 /* EmotionTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3120EF2910F3EC003B4D00 /* EmotionTableViewHeaderView.xib */; };
+		8C4989702913F61000A29D7A /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C49896E2913F61000A29D7A /* CartTableViewCell.swift */; };
+		8C4989712913F61000A29D7A /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C49896F2913F61000A29D7A /* CartTableViewCell.xib */; };
 		8CF9D009291125B6000D5867 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF9D007291125B6000D5867 /* CartViewController.swift */; };
 		8CF9D00A291125B6000D5867 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF9D008291125B6000D5867 /* CartViewController.xib */; };
 /* End PBXBuildFile section */
@@ -31,7 +33,9 @@
 		8C3120E92910F3A7003B4D00 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		8C3120EA2910F3A7003B4D00 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		8C3120ED2910F3D1003B4D00 /* EmoticonTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonTableHeaderView.swift; sourceTree = "<group>"; };
-		8C3120EF2910F3EC003B4D00 /* EmoticonTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmoticonTableHeaderView.xib; sourceTree = "<group>"; };
+		8C3120EF2910F3EC003B4D00 /* EmotionTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmotionTableViewHeaderView.xib; sourceTree = "<group>"; };
+		8C49896E2913F61000A29D7A /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		8C49896F2913F61000A29D7A /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 		8CF9D007291125B6000D5867 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		8CF9D008291125B6000D5867 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3120ED2910F3D1003B4D00 /* EmoticonTableHeaderView.swift */,
-				8C3120EF2910F3EC003B4D00 /* EmoticonTableHeaderView.xib */,
+				8C3120EF2910F3EC003B4D00 /* EmotionTableViewHeaderView.xib */,
 			);
 			path = EmoticonTableHeaderView;
 			sourceTree = "<group>";
@@ -110,6 +114,8 @@
 			children = (
 				8CF9D007291125B6000D5867 /* CartViewController.swift */,
 				8CF9D008291125B6000D5867 /* CartViewController.xib */,
+				8C49896E2913F61000A29D7A /* CartTableViewCell.swift */,
+				8C49896F2913F61000A29D7A /* CartTableViewCell.xib */,
 			);
 			path = CartView;
 			sourceTree = "<group>";
@@ -174,8 +180,9 @@
 			files = (
 				8C3120DA2910E17C003B4D00 /* LaunchScreen.storyboard in Resources */,
 				8C3120EC2910F3A7003B4D00 /* TableViewCell.xib in Resources */,
+				8C4989712913F61000A29D7A /* CartTableViewCell.xib in Resources */,
 				8C3120E82910F38B003B4D00 /* MainViewController.xib in Resources */,
-				8C3120F02910F3EC003B4D00 /* EmoticonTableHeaderView.xib in Resources */,
+				8C3120F02910F3EC003B4D00 /* EmotionTableViewHeaderView.xib in Resources */,
 				8CF9D00A291125B6000D5867 /* CartViewController.xib in Resources */,
 				8C3120D72910E17C003B4D00 /* Assets.xcassets in Resources */,
 			);
@@ -191,6 +198,7 @@
 				8C3120EB2910F3A7003B4D00 /* TableViewCell.swift in Sources */,
 				8C3120CE2910E178003B4D00 /* AppDelegate.swift in Sources */,
 				8CF9D009291125B6000D5867 /* CartViewController.swift in Sources */,
+				8C4989702913F61000A29D7A /* CartTableViewCell.swift in Sources */,
 				8C3120EE2910F3D1003B4D00 /* EmoticonTableHeaderView.swift in Sources */,
 				8C3120E72910F38B003B4D00 /* MainViewController.swift in Sources */,
 			);

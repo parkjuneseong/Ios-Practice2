@@ -56,7 +56,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="author" destination="sgc-xB-8fW" id="zlP-Pu-VpV"/>
                 <outlet property="authorName" destination="sgc-xB-8fW" id="0cM-Yw-kcL"/>
                 <outlet property="emoticonName" destination="wWi-Iq-zEb" id="N9z-3P-WmT"/>
                 <outlet property="purchaseButton" destination="5vL-i8-LAo" id="VZ8-7a-iuE"/>

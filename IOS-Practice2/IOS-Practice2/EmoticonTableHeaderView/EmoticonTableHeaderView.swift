@@ -8,6 +8,7 @@
 
     class EmotionTableViewHeaderView: UIView {
         @IBOutlet weak var label: UILabel!
+        
         private var nibName: String {
             "\(EmotionTableViewHeaderView.self)"
         }
